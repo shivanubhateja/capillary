@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  background: #000;
+  color: white;
+}
+.header div{
+  padding: 10px 5px;
+}
+.header div:nth-child(1){
+  flex: 4
+}
+.header div:nth-child(n+2){
+  flex: 1
+}

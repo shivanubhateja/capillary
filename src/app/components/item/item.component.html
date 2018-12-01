@@ -1,0 +1,45 @@
+<div class="item no-padding col-sm-12">
+    <div class="item">
+        <app-pos-input-field 
+          [fieldType]="'inputField'" 
+          [inputType]="'text'" 
+          [fieldName]="'Description'" 
+          (valueChange)="onValueChange('description', $event)" 
+          [model]="item.description"
+          [required]="true"
+        >
+        </app-pos-input-field>
+      </div>
+      <div class="item">
+          <app-pos-input-field 
+            [fieldType]="'inputField'" 
+            [inputType]="'number'" 
+            [fieldName]="'Quantity'" 
+            (valueChange)="onValueChange('quantity', $event)" 
+            [model]="item.quantity"
+            [required]="true"
+          >
+          </app-pos-input-field>
+        </div>
+        <div class="item">
+            <app-pos-input-field 
+              [fieldType]="'inputField'" 
+              [inputType]="'Number'" 
+              [fieldName]="'Rate'"
+              [infieldLabel]="'$'" 
+              (valueChange)="onValueChange('rate', $event)" 
+              [model]="item.rate"
+              [required]="true"
+            >
+            </app-pos-input-field>
+          </div>
+          <div class="item">
+            $ {{item.quantity*item.rate}}
+          </div>
+          <div *ngIf="index != 0; else elseClause">
+            <button class="btn btn-default" (click)="removeItem()"> X</button>
+          </div>
+          <ng-template #elseClause>
+            <div>&nbsp;</div>
+           </ng-template>
+    </div>

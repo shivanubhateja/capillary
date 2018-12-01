@@ -1,0 +1,29 @@
+<div class="form-group" *ngIf="fieldType === 'inputField'">
+  <label for="name" *ngIf="label">{{label}}</label>  
+  <div class=" input-group mb-3">
+    <div class="input-group-prepend" *ngIf="infieldLabel">
+      <span class="input-group-text" id="basic-addon1">{{infieldLabel}}</span>
+    </div>
+    <input 
+      [(ngModel)]="model" 
+      [type]="inputType" 
+      [placeholder]="placeHolder ? placeHolder : ''" 
+      (ngModelChange)="onValueChange()" 
+      class="form-control" 
+      id="name"
+      [required]="required"
+      #name="ngModel">
+  </div>
+  <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+    {{fieldName}} is not valid
+    </div>
+</div>
+<div class="form-group" *ngIf="fieldType === 'textarea'">
+  <label for="Textarea">{{label}}</label>
+  <textarea [placeholder]="placeHolder" [(ngModel)]="model" (ngModelChange)="onValueChange()" class="form-control" id="Textarea" rows="3" #name="ngModel" [required]="required"></textarea>
+  <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+    {{fieldName}} is not valid
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container form-group no-padding">
+  <form #formData="ngForm">
+    <div class="col-sm-12 no-padding">
+      <!-- invoice no -->
+      <div class="col-sm-2  offset-sm-10 no-gutters no-padding">
+        <app-pos-input-field [required]="true" [fieldType]="'inputField'" [inputType]="'number'" [fieldName]="'Invoice Id'"
+          [infieldLabel]="'#'" (valueChange)="onValueChange('name', $event)" [model]="formDataObj.name">
+        </app-pos-input-field>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 billingForInfo no-padding">
+          <!-- invoice form info -->
+          <app-pos-input-field [required]="true" [fieldType]="'textarea'" [fieldName]="'Billing From Info'"
+            [placeHolder]="'Who is this invoice from?(required)'" (valueChange)="onValueChange('billingFrom', $event)"
+            [model]="formDataObj.billingFrom">
+          </app-pos-input-field>
+          <!-- invoice to info -->
+          <app-pos-input-field [required]="true"  [fieldType]="'textarea'" [fieldName]="'Invoice To Info'" [label]="'Bill To'"
+            [placeHolder]="'Who is this invoice to?(required)'" (valueChange)="onValueChange('billingTo', $event)"
+            [model]="formDataObj.billingTo">
+          </app-pos-input-field>
+        </div>
+        <div class="col-sm-8 dateInfo no-padding">
+          <!-- invoice date -->
+          <div class="col-sm-4 offset-sm-8 no-padding">
+            Date - <app-date-picker [placeholder]="''" (selectedDateChanged)="onValueChange('invoiceDate', $event)"></app-date-picker>
+          </div>
+          <!-- due date -->
+          <div class="col-sm-5 offset-sm-7 no-padding">
+            Due Date - <app-date-picker [placeholder]="''" (selectedDateChanged)="onValueChange('invoiceDate', $event)"></app-date-picker>
+          </div>
+          <!-- balance -->
+          <div class="balanceDue col-sm-7 offset-sm-5">
+            <h5>Balance Due 0$</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 no-padding">
+      <app-item-list [itemList]="formDataObj.items" (itemsChanges)="handleItemChange($event)"></app-item-list>
+    </div>
+    <div class="col-sm-2 offset-sm-10 no-padding">
+      <div>
+        Sub Total: $ {{formDataObj.subTotal}}
+      </div>
+      <br>
+      <app-pos-input-field [required]="true" [fieldType]="'inputField'" [inputType]="'number'" [fieldName]="'Tax'"
+      [infieldLabel]="'%'"  [label]="'Tax'" (valueChange)="onValueChange('tax', $event)" [model]="formDataObj.tax">
+      </app-pos-input-field>
+      <br>
+      <div>
+        Total: $ {{formDataObj.totalWithTax | number : '1.0'}}
+      </div>
+      <br>
+      <app-pos-input-field [required]="true" [fieldType]="'inputField'" [inputType]="'number'" [fieldName]="'Amount Paid'"
+       [infieldLabel]="'$'" [label]="'Amount Paid'" (valueChange)="onValueChange('amountPaid', $event)" [model]="formDataObj.amountPaid">
+      </app-pos-input-field>
+    </div>
+    <div class="col-sm-12 billingForInfo no-padding">
+        <!-- invoice form info -->
+        <app-pos-input-field [required]="true" [fieldType]="'textarea'" [fieldName]="'Notes'" [label]="'Notes'"
+          [placeHolder]="'Notes - any relevant information not already covered'" (valueChange)="onValueChange('notes', $event)"
+          [model]="formDataObj.notes">
+        </app-pos-input-field>
+        <!-- invoice to info -->
+        <app-pos-input-field [fieldType]="'textarea'" [fieldName]="'Terms'" [label]="'Terms'"
+          [placeHolder]="'Terms and conditions - late fees, payment methods, delivery schedule'" (valueChange)="onValueChange('terms', $event)"
+          [model]="formDataObj.terms">
+        </app-pos-input-field>
+      </div>
+    <div class="col-sm-12 no-padding">  
+      <button class="btn btn-success print-button " (click)="printBill()">Print</button>
+    </div>
+  </form>
+</div>

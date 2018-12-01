@@ -1,0 +1,12 @@
+.dateInfo{
+  text-align: right;
+}
+.balanceDue{
+  border: 1px solid grey;
+  border-radius: 4px;
+  background: #ddd;
+  padding: 20px;
+}
+.print-button {
+  width: 100%;
+}

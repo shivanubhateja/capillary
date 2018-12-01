@@ -1,0 +1,10 @@
+<mat-form-field>
+  <input matInput  (dateChange)="onValueChange()" [matDatepicker]="picker" [(ngModel)]="selectedDate" [placeholder]="placeholder"  #name="ngModel" required>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div [hidden]="name.valid || name.pristine"
+class="alert alert-danger">
+Please select date
+</div>

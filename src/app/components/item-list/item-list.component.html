@@ -1,0 +1,15 @@
+<div class="item-container container col-sm-12">
+  <div class="header">
+      <div>Item</div>
+      <div>Quantity</div>
+      <div>Rate</div>
+      <div>Amount</div>
+      <div> </div>
+  </div>
+  <div  *ngFor="let item of itemList; index as i">
+    <app-item [item]="item" [index]="i" (valueChange)="itemUpdated($event)" (removeItemEvent)="removeItem($event)"></app-item>
+  </div>
+  <button class="btn btn-primary" (click)="addNewItem()">
+    Add Item
+  </button>
+</div>

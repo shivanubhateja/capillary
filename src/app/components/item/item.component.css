@@ -1,0 +1,12 @@
+.item {
+  display: flex;
+}
+.item div{
+  padding: 10px 5px;
+}
+.item div:nth-child(1){
+  flex: 4
+}
+.item div:nth-child(n+2){
+  flex: 1
+}
