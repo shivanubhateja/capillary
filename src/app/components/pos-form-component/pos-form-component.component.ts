@@ -9,6 +9,12 @@ import { ItemModel } from '../../models/formEntity';
 export class PosFormComponentComponent implements OnInit {
 
   formDataObj = {
+    invoiceId: '',
+    billingFrom: '',
+    billingTo: '',
+    amountPaid: '',
+    notes: '',
+    terms: '',
     items: [new ItemModel('Item 1', 1, 1, 0)],
     subTotal: 0,
     totalWithTax: 0,
